@@ -1,0 +1,14 @@
+.content {
+      display: flex;
+
+      border: rgb(158, 127, 127) 2px solid;
+}
+
+.chats {
+
+      border: 2px red solid;
+}
+
+.chatroom {
+      padding-left: 200px;
+}
