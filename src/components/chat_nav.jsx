@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { signOut } from 'firebase/auth'
+import { auth } from '../firebase'
 const chat_nav = () => {
       return (
             <div className='chat_nav' style={{ display: 'flex', gap: "20px" }}>
@@ -7,7 +8,7 @@ const chat_nav = () => {
                   <div className='user'>
                         <img src="" alt="" />
                         <span>mithi mame</span>
-                        <button>logout</button>
+                        <button onClick={() => { signOut(auth) }}>logout</button>
                   </div>
             </div>
       )

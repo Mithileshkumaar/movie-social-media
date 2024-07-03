@@ -4,10 +4,12 @@ import { auth, storage, db } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from 'react-router-dom';
+
 
 function Reg() {
       const [err, setErr] = useState(false);
-
+      const navigate = useNavigate()
       const handleSubmit = async (e) => {
             e.preventDefault();
             const displayName = e.target[0].value;
@@ -44,6 +46,8 @@ function Reg() {
                                           email,
                                           photoURL: downloadURL
                                     });
+                                    await setDoc(doc(db, "userChat", res.user.uid), {});
+                                    navigate('/chat')
                               } catch (error) {
                                     setErr(true);
                                     console.error("Error updating profile or setting Firestore document:", error);
